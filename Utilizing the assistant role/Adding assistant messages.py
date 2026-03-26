@@ -1,0 +1,26 @@
+import os 
+from dotenv import load_dotenv
+from openai import OpenAI 
+
+#Load environment variables from .env
+load_dotenv()
+
+# Get API key 
+api_key = os.getenv("OPENAI_API_KEY")
+
+#Create OpenAI client 
+client = OpenAI(api_key=api_key)
+
+# Create a request to the chat completions endpoint 
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    # Add a user and assistant message for in-context learning
+    messages=[
+        {"role": "system", "content": "You are a helpful Geography tutor that generates concise summaries for different countries."},
+        {"role": "user", "content": "Give me a quick summary of Portugal."},
+        {"role": "assistant", "content": "Portugal is a country in Europe that borders Spain. The capital city is Lisboa."},
+        {"role": "user", "content": "Give me a quick summary of Greece."}
+    ]
+)
+
+print(response.choices[0].message.content)
