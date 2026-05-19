@@ -1,0 +1,12 @@
+[project]
+name = "my-openai-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dotenv>=0.9.9",
+    "gradio>=6.13.0",
+    "ipykernel>=7.2.0",
+    "openai>=2.26.0",
+]
